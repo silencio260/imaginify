@@ -170,10 +170,9 @@ const TransformationForm = ({action, data = null, userId, type, creditBalance, c
                     [fieldName === 'prompt' ? 'prompt' : 'to'] : value
                 }
             }))
+        }, 1000)()
 
-            return onChangeField(value)
-        }, 1000)
-
+        return onChangeField(value)
     }
 
     //TODO: implement transformation credits
@@ -224,6 +223,7 @@ const TransformationForm = ({action, data = null, userId, type, creditBalance, c
                 render={({ field }) => (
                     <Select
                         onValueChange={(value: any) => onSelectFieldHandler(value, field.onChange)}
+                        value={field.value}
                     >
                         <SelectTrigger className="w-[180px]">
                             <SelectValue placeholder="Theme" />
@@ -255,7 +255,7 @@ const TransformationForm = ({action, data = null, userId, type, creditBalance, c
                         type === 'remove' ? 'Object to remove' : 'Object to recolor'
                     }
                     className="w-full"
-                    render={ (({field}) => (
+                    render={({field}) => (
                         <Input 
                             value={field.value}
                             className="input-field"
@@ -266,7 +266,7 @@ const TransformationForm = ({action, data = null, userId, type, creditBalance, c
                                 field.onChange
                             )}
                         />
-                    ))
+                    )
                     }
                 />
 
